@@ -1,25 +1,20 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+package information;
+import java.text.DateFormatSymbols;
 import java.util.Scanner;
 
-public class ShortDateConverter {
+  public class convertDate {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter a short date (YYYY-MM-DD): ");
-        String shortDate = scanner.nextLine();
-
-        try {
-            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = inputFormat.parse(shortDate);
-
-            SimpleDateFormat outputFormat = new SimpleDateFormat("MMMM d, yyyy");
-            String fullDate = outputFormat.format(date);
-
-            System.out.println("Full Date: " + fullDate);
-        } catch (ParseException e) {
-            System.out.println("Invalid date format. Please enter date in YYYY-MM-DD format.");
-        }
+      
+      //Ask the user to enter a short date in the format YYYY-MM-DD....
+      Scanner scanner = new Scanner(System.in);
+      System.out.println("Enter shortDate as(2024-01-27):");
+      String shortDate = scanner.nextLine();
+      int year = Integer.parseInt(shortDate.substring(0,4));
+      int month = Integer.parseInt(shortDate.substring(5,7));
+      int day = Integer.parseInt(shortDate.substring(8));
+      String monthName = new DateFormatSymbols().getMonths()[month - 1];
+      System.out.println("Full date : " + monthName + " " + day + ", " + year);
+       scanner.close();
     }
 }
